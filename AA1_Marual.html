@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>CS Alternative Assessment 1</title>
+</head>
+
+<body>
+<center>
+<h2> Calculate if my Birthday was a Leap Year </h2>
+<br>
+
+<input type=date id="date" name="BDATE">
+<button onclick="calcAgeNow()"> Calculate Age </button>
+
+</center>
+
+<script>
+
+// enter a birthday and find out how old the person is
+
+  function calcAgeNow(){
+    var input = document.getElementById("date").value;
+    console.log(input)
+
+    let bday = new Date(input);  
+    console.log("bday: " + bday);
+
+    
+    //calculate month difference from current date in time  
+    let month_diff = Date.now() - bday.getTime();  
+    console.log("month_diff: " + month_diff + " = " + Date.now() + "-" + bday.getTime()) ;
+
+    //convert the calculated difference in date format  
+    let age_dt = new Date(month_diff);  
+    console.log("age_dt: "  + age_dt) ;
+
+      
+    //extract year from date      
+    let year = age_dt.getUTCFullYear();  
+    console.log("year: " + year)
+      
+    //now calculate the age of the user  
+    let age = Math.abs(year - 1970);  
+    console.log("age: " + age)
+
+    let by = new Date(input);
+    console.log(by);
+    
+    let birthYear = by.getFullYear();
+    console.log("Birth Year: " + birthYear);
+
+    var x = 0;
+    if(birthYear % 4 == 0) {
+      x = 'y';
+      console.log("4 = " + x);
+    }
+    
+    if(birthYear % 100 == 0) {
+      x = 'n';
+      console.log("100 = " + x);
+    }
+    
+    if(birthYear % 400 == 0) {
+      x = 'y';
+      console.log("400 = " + x);
+    }
+    
+    if(x == 0) {
+      x = 'n';
+      console.log("Not = " + x);
+    } 
+    
+    //display the calculated age  
+    document.write("Age of the date entered: " + age + " years" + "<br>"); 
+    
+    if(x === 'y') {
+      document.write("Your birthyear is a leap year.");
+    }
+    if(x === 'n') {
+      document.write("Your birthyear is not a leap year.");
+    }
+  }
+</script>
+</body>
+</html>
